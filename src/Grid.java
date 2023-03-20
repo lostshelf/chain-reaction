@@ -10,13 +10,20 @@ public class Grid {
 
     @Override
     public String toString() {
-        String output = "";
+        String output = "  ";
 
+        for (int i = 0; i < cells[0].length; i++)
+            output = output.concat(String.format("  %c ", (char) (65 + i)));
+        output = output.concat("\n");
+
+        int rowCount = 1;
         for (int[] rows : cells) {
+            output = output.concat(String.format("%d ", rowCount));
             for (int cell : rows)
                 output = output.concat(String.format("| %d ", cell));
 
             output = output.concat("|\n");
+            rowCount++;
         }
 
         return output;
@@ -38,5 +45,9 @@ public class Grid {
             return 3;
 
         return 4;
+    }
+
+    public void addOrb(int row, int column) {
+        cells[row][column]++;
     }
 }
