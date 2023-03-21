@@ -10,10 +10,14 @@ public class Grid {
 
     @Override
     public String toString() {
+        // Buffer to hold output in
         String output = "  ";
 
+        // Loop through each column and add a letter to the top
         for (int i = 0; i < cells[0].length; i++)
             output = output.concat(String.format("  %c ", (char) (65 + i)));
+
+        // Move cursor to the next line
         output = output.concat("\n");
 
         int rowCount = 1;
@@ -30,8 +34,8 @@ public class Grid {
     }
 
     public int getCriticalMass(int row, int column) {
-        int adjCells = 0;
-
+        // Struggling to figure out how to calculate the critical mass of each cell so I did this to make the code
+        // easier to follow along
         boolean isInFirstRow = row == 0;
         boolean isInLastRow = row == cells.length - 1;
 
@@ -47,6 +51,7 @@ public class Grid {
         return 4;
     }
 
+    // Add an orb to the specified cell
     public void addOrb(int row, int column) {
         cells[row][column]++;
     }
