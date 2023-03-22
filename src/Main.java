@@ -1,7 +1,9 @@
+import org.fusesource.jansi.AnsiConsole;
+
 public class Main {
     public static void main(String[] args) {
-        Grid grid = new Grid(9, 6);
+        AnsiConsole.systemInstall();
 
-        System.out.println(grid);
+        Game game = new Game(2);
     }
 }

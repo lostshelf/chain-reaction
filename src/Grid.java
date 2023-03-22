@@ -1,11 +1,11 @@
 public class Grid {
-    private int[][] cells;
+    private Cell[][] cells;
 
     public Grid() {
-        cells = new int[9][6];
+        cells = new Cell[9][6];
     }
     public Grid(int rows, int columns) {
-        cells = new int[rows][columns];
+        cells = new Cell[rows][columns];
     }
 
     @Override
@@ -21,10 +21,10 @@ public class Grid {
         output = output.concat("\n");
 
         int rowCount = 1;
-        for (int[] rows : cells) {
+        for (Cell[] rows : cells) {
             output = output.concat(String.format("%d ", rowCount));
-            for (int cell : rows)
-                output = output.concat(String.format("| %d ", cell));
+            for (Cell cell : rows)
+                output = output.concat(String.format("| %s ", cell));
 
             output = output.concat("|\n");
             rowCount++;
@@ -52,7 +52,7 @@ public class Grid {
     }
 
     // Add an orb to the specified cell
-    public void addOrb(int row, int column) {
-        cells[row][column]++;
+    public void addOrb(int row, int column, Player player) {
+        cells[row][column].addOrbs(player);
     }
 }
