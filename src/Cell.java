@@ -17,7 +17,7 @@ public class Cell {
     public String toString() {
         String output = "";
 
-        orbs.forEach((key, value) -> System.out.printf("%s ", ansi().render(String.format("@|%s %s|", key.getColor(), value))));
+        orbs.forEach((key, value) -> System.out.printf("%s ", ansi().render(String.format("@|%s%s|", key.getColor(), value))));
 
         return output;
     }

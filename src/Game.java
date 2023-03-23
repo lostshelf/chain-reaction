@@ -3,7 +3,7 @@ import org.fusesource.jansi.Ansi;
 import java.util.Scanner;
 
 public class Game {
-    private Grid grid = new Grid();
+    private Grid grid = new Grid(10, 10);
     private Player[] players;
     private Player currentTurn;
 
@@ -21,5 +21,10 @@ public class Game {
 
             tempPlayers[0] = new Player(name, color);
         }
+    }
+
+    @Override
+    public String toString() {
+        return grid.toString();
     }
 }

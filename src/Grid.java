@@ -26,7 +26,12 @@ public class Grid {
             for (Cell cell : rows)
                 output = output.concat(String.format("| %s ", cell));
 
-            output = output.concat("|\n");
+            output = output.concat("|");
+
+            // No idea why I need to add three for it to work but I'll get to figuring that out eventually
+            if (rowCount != rows.length + 3)
+                output = output.concat("\n");
+
             rowCount++;
         }
 

@@ -5,5 +5,7 @@ public class Main {
         AnsiConsole.systemInstall();
 
         Game game = new Game(2);
+
+        System.out.println(game);
     }
 }
