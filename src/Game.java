@@ -21,6 +21,8 @@ public class Game {
 
             tempPlayers[0] = new Player(name, color);
         }
+
+        this.players = tempPlayers;
     }
 
     @Override
