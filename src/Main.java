@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         AnsiConsole.systemInstall();
 
-        Game game = new Game(2);
+        Game game = new Game(1);
 
         System.out.println(game);
     }
