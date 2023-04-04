@@ -11,20 +11,22 @@ public class Grid {
     @Override
     public String toString() {
         // Buffer to hold output in
-        String output = "  ";
+        String output = "";
+        String spacing = calculateSpacing(cells[0][0].playerCount());
 
         // Loop through each column and add a letter to the top
-        for (int i = 0; i < cells[0].length; i++)
-            output = output.concat(String.format("  %c ", (char) (65 + i)));
+        for (int i = 0; i < cells[0].length; i++) {
+            output = output.concat(String.format("%s%s%c", spacing, (i > 0) ? " " : "", (char) (65 + i)));
+        }
 
         // Move cursor to the next line
         output = output.concat("\n");
 
         int rowCount = 1;
         for (Cell[] rows : cells) {
-            output = output.concat(String.format("%s%d ", (rowCount > 10) ? " " : "", rowCount));
+            output = output.concat(String.format("%s%d ", (rows.length > 9 && rowCount < 10) ? " " : "", rowCount));
             for (Cell cell : rows)
-                output = output.concat(String.format("| %s ", cell));
+                output = output.concat(String.format("|%s", cell));
 
             output = output.concat("|");
 
@@ -60,4 +62,14 @@ public class Grid {
     public void addOrb(int row, int column, Player player) {
         cells[row][column].setOrbs(player, cells[row][column].getOrbs(player) + 1);
     }
+
+    private String calculateSpacing(int playerCount) {
+        String output = "";
+
+        for (int i = 0, lim = playerCount * 3 - 1; i < lim; i++) {
+            output = output.concat(" ");
+        }
+
+        return output;
+    };
 }

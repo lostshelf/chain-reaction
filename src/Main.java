@@ -4,10 +4,16 @@ import org.fusesource.jansi.AnsiConsole;
 
 public class Main {
     public static void main(String[] args) {
+        // Set up the console to use the jansi library
         AnsiConsole.systemInstall();
 
-        Game game = new Game(1);
+        // Create the main game client
+        Game game = new Game();
 
-        System.out.println(game);
+        // Start the main game loop
+        game.loop();
+
+        // Return console back to normal
+        AnsiConsole.systemUninstall();
     }
 }

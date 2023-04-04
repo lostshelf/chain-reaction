@@ -6,12 +6,10 @@ public class Cell {
     private HashMap<Player, Integer> orbs;
 
     public Cell(Player[] players) {
-        HashMap<Player, Integer> tempOrbs = new HashMap<>();
+        orbs = new HashMap<>();
 
-        for (Player p : players)
-            tempOrbs.put(p, 0);
-
-        orbs = tempOrbs;
+        for (int i = 0; i < players.length; i++)
+            orbs.put(players[i], 0);
     }
 
     public void setOrbs(Player player, int amount) {
@@ -41,14 +39,24 @@ public class Cell {
         var players = orbs.keySet();
 
         for (Player p : players) {
-                output = output.concat(
+                output = output.concat(" " +
                     ansi()
                         .render(
                             String.format("@|%s %s|@", p.getColor(), orbs.get(p))
                         ).toString()
+                    + " "
                 );
         }
 
         return output;
+    }
+
+    public int playerCount() {
+        int players = orbs.keySet().toArray().length;
+
+        System.out.printf("There are %d players.%n", players);
+
+        return players;
+
     }
 }
