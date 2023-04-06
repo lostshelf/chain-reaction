@@ -59,8 +59,11 @@ public class Grid {
     }
 
     // Add an orb to the specified cell
-    public void addOrb(int row, int column, Player player) {
-        cells[row][column].setOrbs(player, cells[row][column].getOrbs(player) + 1);
+    public void addOrbs(int row, int column, Player player) {
+        cells[row][column].addOrbs(player, 1);
+
+        if (getCriticalMass(row, column) > cells[row][column].getOrbs())
+            explode(row, column);
     }
 
     private String calculateSpacing(int playerCount) {
@@ -71,5 +74,14 @@ public class Grid {
         }
 
         return output;
-    };
+    }
+
+    public void explode(int row, int column) {
+        cells[row][column] = new Cell(Game.getPlayers());
+
+        addOrbs(row - 1, column - 1, Game.getCurrentTurn());
+        addOrbs(row + 1, column, Game.getCurrentTurn());
+        addOrbs(row, column + 1, Game.getCurrentTurn());
+        addOrbs(row, column - 1, Game.getCurrentTurn());
+    }
 }

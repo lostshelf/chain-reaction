@@ -8,16 +8,19 @@ public class Cell {
     public Cell(Player[] players) {
         orbs = new HashMap<>();
 
-        for (int i = 0; i < players.length; i++)
-            orbs.put(players[i], 0);
+        for (Player player : players) orbs.put(player, 0);
     }
 
     public void setOrbs(Player player, int amount) {
         orbs.put(player, amount);
     }
 
-    public int getOrbs(Player player) {
-        return orbs.get(player);
+    public void addOrbs(Player p, int amount) {
+        setOrbs(p, getOrbs() + amount);
+    }
+
+    public int getOrbs() {
+        return orbs.values().size();
     }
 
     public static Cell[][] getCellArray(int rows, int columns, Player[] players) {

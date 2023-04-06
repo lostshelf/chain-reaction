@@ -16,8 +16,16 @@ public class Game {
     }
 
     private Grid grid;
-    private Player[] players;
-    private Player currentTurn;
+    private static Player[] players;
+    private static Player currentTurn;
+
+    public static Player[] getPlayers() {
+        return players;
+    }
+
+    public static Player getCurrentTurn() {
+        return currentTurn;
+    }
 
     public Game() {
         // Scanner object for user input
@@ -68,8 +76,6 @@ public class Game {
     }
 
     void loop() {
-        System.out.println("To be implemented.");
 
-        System.out.println(this);
     }
 }
